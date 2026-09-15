@@ -12,7 +12,8 @@ Student ID: 26048304
 This is a Web App using Streamlit where users can select 2 currencies and an amount to be converted. The goal of this program is to display the current conversion rate between 2 currency codes at a specific date or for the latest date. It will also calculate the inverse conversion rate between these 2 currencies. \
 After selection the app will display the latest conversion rate, the converted amount and the inverse conversion rate. \
 Additionally users can select a date in the past in order to get the conversion for this day. \
-The Streamlit Web App has the following elements: \\
+The Streamlit Web App has the following elements:
+
 --> A number input where user can enter the amount to be converted \
 --> A select box listing all the currencies available on Frankfurter \
 --> A second select box listing all the currencies available on Frankfurter \
@@ -33,7 +34,7 @@ Future versions of this app will have __
 ## Project Structure
 <List all folders and files of this project and provide quick description for each of them>
 
-The project has the following files: \
+The project has the following files:
 
 --> app.py: main Streamlit python script used for managing users’ inputs and displaying results \
 --> api.py: python script that will contain the code for making API calls \
@@ -44,7 +45,7 @@ The project has the following files: \
 ## Citations
 <Mention authors and provide links code you source externally>
 
-This program calls 3 different API endpoints from the Frankfurter app: \
+This program calls 3 different API endpoints from the Frankfurter app:
 
 --> Extracting the list of available currency codes (documentation: https://www.frankfurter.app/docs/#currenciesLinks to an external site.) \
 --> Extracting the latest conversion rate for the specified currency codes (documentation: https://www.frankfurter.app/docs/#latestLinks to an external site.) \
