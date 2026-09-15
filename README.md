@@ -33,7 +33,8 @@ Future versions of this app will have __
 ## Project Structure
 <List all folders and files of this project and provide quick description for each of them>
 
-The project has the following files: \\
+The project has the following files: \
+
 --> app.py: main Streamlit python script used for managing users’ inputs and displaying results \
 --> api.py: python script that will contain the code for making API calls \
 --> frankfurter.py: python script that will contain the functions used for calling relevant Frankfurter endpoints and extracting information. \
@@ -43,7 +44,8 @@ The project has the following files: \\
 ## Citations
 <Mention authors and provide links code you source externally>
 
-This program calls 3 different API endpoints from the Frankfurter app: \\
+This program calls 3 different API endpoints from the Frankfurter app: \
+
 --> Extracting the list of available currency codes (documentation: https://www.frankfurter.app/docs/#currenciesLinks to an external site.) \
 --> Extracting the latest conversion rate for the specified currency codes (documentation: https://www.frankfurter.app/docs/#latestLinks to an external site.) \
 --> Extracting the historical conversion rate for the specified currency codes and a given date (documentation: https://www.frankfurter.app/docs/#historicalLinks to an external site.)
