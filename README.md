@@ -1,8 +1,8 @@
-# <project title>
+# <FX Currency Converter for 94692 Data Science Practice>
 
 ## Author
-Name: <first and last name>
-Student ID: <UTS student id>
+Name: Dominique Daval Santos
+Student ID: 26048304
 
 ## Description
 <What your application does>
