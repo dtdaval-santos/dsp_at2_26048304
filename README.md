@@ -1,13 +1,14 @@
-# <FX Currency Converter for 94692 Data Science Practice>
+# FX Currency Converter for 94692 Data Science Practice
 
 ## Author
-Name: Dominique Daval Santos
+Name: Dominique Daval Santos \
 Student ID: 26048304
 
 ## Description
 <What your application does>
 <Some of the challenges you faced>
 <Some of the features you hope to implement in the future>
+
 
 ## How to Setup
 <Provide a step-by-step description of how to get the development environment set and running.>
