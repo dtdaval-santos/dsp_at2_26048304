@@ -3,6 +3,14 @@ import json
 
 BASE_URL = "https://api.frankfurter.app"
 
+# manual testing of endpoints
+# curl -L "https://api.frankfurter.app/currencies"
+# curl -L "https://api.frankfurter.app/latest?from=AUD&to=USD"
+# curl -L "https://api.frankfurter.app/latest?amount=50&from=AUD&to=USD"
+# curl -L "https://api.frankfurter.app/2024-09-01?from=AUD&to=USD"
+# curl -L "https://api.frankfurter.app/latest?from=AUD&to=ZZZ"
+# curl -L "https://api.frankfurter.app/2023-06-01..2023-12-01?from=AUD&to=USD"
+
 def get_currencies_list():
     """
     Function that will call the relevant API endpoint from Frankfurter in order to get the list of available currencies.
