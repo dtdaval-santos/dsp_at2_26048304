@@ -70,6 +70,7 @@ Installing with `-r requirements.txt` reproduces that in the virtual environment
 Only two packages were installed directly; everything else in the file (e.g., numpy, pandas, pyarrow) is a sub-dependency that `pip` pulled in automatically to support those two:
 
 | Package | Version | Purpose |
+|---|---|---|
 | `streamlit` | 1.50.0 | Web app framework — builds the UI |
 | `requests` | 2.32.5 | Makes HTTP calls to the Frankfurter API |
 
