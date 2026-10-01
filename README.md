@@ -6,8 +6,6 @@ Student ID: 26048304
 
 ## Description
 <What your application does>
-<Some of the challenges you faced>
-<Some of the features you hope to implement in the future>
 
 This is a Web App using Streamlit where users can select 2 currencies and an amount to be converted. The goal of this program is to display the current conversion rate between 2 currency codes at a specific date or for the latest date. It will also calculate the inverse conversion rate between these 2 currencies. \
 After selection the app will display the latest conversion rate, the converted amount and the inverse conversion rate. \
@@ -20,8 +18,15 @@ The Streamlit Web App has the following elements:
 --> A button that will fetch the latest conversion rate for the selected currencies \
 --> A text box that will display the expected text described previously \
 --> A date input where user can select a date in the past \
---> A text box that will display the expected text described previously \\
-Future versions of this app will have __
+--> A text box that will display the expected text described previously
+
+<Some of the challenges you faced>
+I placed this project on Github so I can practice using the technology, so it took more time to learn it and create branches than to just build the app and submit the zip folder.
+It was also my first time to make a streamlit app outside of the few lines in the class labs and U:PASS sessions, so there was some trial and error.
+Honestly, writing the README file and the elaborate docstrings and comments was more tedious than the code.
+
+<Some of the features you hope to implement in the future>
+Future versions of this app will have st.session_state implemented to persist the outputs of clicking both Latest and Historical Rates.
 
 ## How to Run the Program
 <Provide instructions and examples>
@@ -86,6 +91,9 @@ streamlit run app.py
 ### Using the App
 <text here>
 
+Note: Expected Streamlit quirk, not a bug: clicking "Conversion Rate" after already clicking "Get Latest Rate" will make the latest-rate section's output disappear from the page. \
+The whole script reruns on every interaction, and st.button(...) only evaluates True on the exact run right after its own click.
+
 ## Project Structure
 <List all folders and files of this project and provide quick description for each of them>
 
@@ -112,7 +120,7 @@ reverse_rate \
 format_output
 
 ### README.md: 
-The markdown file you are reading (so meta)
+The markdown file you are reading (this line is so meta)
 
 ## Citations
 <Mention authors and provide links code you source externally>

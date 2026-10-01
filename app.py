@@ -3,7 +3,7 @@ import datetime
 import pandas as pd
 
 from frankfurter import get_currencies_list, get_latest_rates, get_historical_rate, get_rate_trend # Based on project brief screenshot chart is needed though not stated in template files
-from currency import reverse_rate, round_rate, format_output
+from currency import format_output, reverse_rate, round_rate # *_rate functions are used in format_output function; imported here for completeness
 
 # Display Streamlit App Title
 st.title("FX Converter")
@@ -32,28 +32,40 @@ if st.button("Get Latest Rate"):
     # Encode the positive case first
     if rate is not None:
         st.subheader("Latest Conversion Rate")
+        # A text box that will display the expected text described previously
         st.write(format_output(date, from_currency, to_currency, rate, amount))
 
-        # based on project brief screenshot chart is needed though not stated in template files
-        # project brief screenshot showed lookback of 12 quarters (3 years)
+        # Based on project brief screenshot chart is needed though not stated in template files
+        # Project brief screenshot showed lookback of 12 quarters (3 years)
         trend = get_rate_trend(from_currency, to_currency, years=3)
 
         if trend:
             st.subheader("Rate Trend Over the Last 3 years")
             trend_series = pd.Series(trend, name=f"{from_currency}/{to_currency}") # Not displayed but named for completeness on backend
             st.line_chart(trend_series)
-    # Error handling for the negative case
+    # A text box that will display the error encountered
     else:
-        st.error(f"Unable to fetch the latest rate for {from_currency} to {to_currency}. Please try again later.")
+        st.error(f"Unable to fetch the latest rate for {from_currency} to {to_currency}. Please try a different input or try again later.")
 
 # Add a date selector (calendar)
+# A date input where user can select a date in the past
+selected_date = st.date_input("Select a date for historical rates:", max_value=datetime.date.today())
 
 # Add a button to get and display the historical rate for selected date, currencies and amount
+if st.button("Conversion Rate"):
+    date_str = selected_date.strftime("%Y-%m-%d")
+    # Call the get_historical_rate function from frankfurter.py
+    date, rate = get_historical_rate(from_currency, to_currency, amount, date_str, amount)
 
+    # Encode the positive case first
+    if rate is not None:
+        st.subheader("Historical Conversion Rate")
+        # A text box that will display the expected text described previously
+        st.write(format_output(date, from_currency, to_currency, rate, amount))
+    # A text box that will display the error encountered; chart was only for latest rate so none here
+    else:
+        st.error(f"Unable to fetch the historical rate for {from_currency} to {to_currency} on {selected_date}. Please try a different input or try again later.")
 
-
-# A text box that will display the expected text described previously
-# A date input where user can select a date in the past
 # A text box that will display the expected text described previously
 
 
