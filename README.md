@@ -106,42 +106,60 @@ This project was built with **Python 3.9.6**. Using a different major version ma
 
 ### Using the App
 
-Note: Expected Streamlit quirk, not a bug: clicking "Conversion Rate" after already clicking "Get Latest Rate" will make the latest-rate section's output disappear from the page. \
+1. Launch the app from your terminal, with the virtual environment active:
+
+   ```bash
+   streamlit run app.py
+   ```
+
+   This opens the app automatically in your default browser (usually at `localhost:8501`).
+
+2. Enter the amount to be converted. The input will not accept `0` or a blank/negative value — it's restricted to a minimum of `1`, so there's always a valid amount before clicking either rate button.
+
+3. Make sure "From Currency" and "To Currency" are set to two different currencies. Selecting the same currency for both will return an error — Frankfurter's own API rejects that combination (see Known Limitations above).
+
+4. Click "Get Latest Rate" for the current rate, or pick a date and click "Conversion Rate" for a historical rate. Each displays the formatted conversion sentence below its button.
+
+    Note: Expected Streamlit quirk, not a bug: clicking "Conversion Rate" after already clicking "Get Latest Rate" will make the latest-rate section's output disappear from the page. \
 The whole script reruns on every interaction, and st.button(...) only evaluates True on the exact run right after its own click.
 
-**To quit the app:**
+5. To quit the app:
 
-In the terminal where it's running:
+   In the terminal where it's running:
 
-```bash
-Control + C   # Mac
-Ctrl + C      # Windows
-```
+   ```bash
+   Control + C   # Mac
+   Ctrl + C      # Windows
+   ```
 
 ## Project Structure
 
 The project has 4 modules. Note that more details like parameters and elaborate docstrings are inside the files, not in this README. The module files are as follows:
 
-### app.py: 
-main Streamlit python script used for managing users’ inputs and displaying results \
+### app.py
+Main Streamlit script. Builds the UI — the amount input, the two currency select boxes, the date picker, and the two rate buttons — calls the relevant functions from `frankfurter.py` and `currency.py` in response to each button click, and displays either the formatted result or an error message.
 
-### api.py: python script that will contain the code for making API calls
-get_url: call the API (www.frankfurter.app) and handle errors. \
-only passes values from the functions in other files, which partially comes from the streamlit app's user input.
+### api.py
+Contains `get_url`, the single function responsible for every HTTP request this app sends. It wraps `requests.get()` in a try/except block so network failures (no connection, DNS failure, timeout) are caught here once, rather than every function in `frankfurter.py` needing its own exception handling. Called indirectly by every function in `frankfurter.py` — never called directly from `app.py`.
 
-### frankfurter.py: python script that will contain the functions used for calling relevant Frankfurter endpoints and extracting information.
-get_currencies_list \
-get_latest_rates \
-get_historical_rate \
-get_rate_trend (with inherited logic from get_historical_rate)
+### frankfurter.py
+Contains the functions that call Frankfurter's three API endpoints and extract the data `app.py` needs from each response.
 
-### currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app.
-round_rate \
-reverse_rate \
-format_output
+- `get_currencies_list`: fetches the full list of currency codes Frankfurter supports; used to populate both currency select boxes on app load.
+- `get_latest_rates`: fetches the current conversion rate for the selected currencies and amount; called when "Get Latest Rate" is clicked.
+- `get_historical_rate`: fetches the conversion rate for a specific past date; called when "Conversion Rate" is clicked.
+- `get_rate_trend`: builds the 3-year quarterly rate history used for the trend chart; called automatically after a successful "Get Latest Rate" request. Reuses `get_historical_rate` internally rather than duplicating its API-calling logic.
 
-### README.md: 
-The markdown file you are reading (this line is so meta)
+### currency.py
+Contains the functions that format a raw conversion rate into the text and numbers displayed in the app.
+
+- `round_rate`: rounds a rate to 4 decimal places.
+- `reverse_rate`: calculates the inverse of a conversion rate, guarding against division by zero.
+- `format_output`: builds the final display sentence (rate, converted amount, inverse rate) shown under each button, following the brief's required wording.
+
+### Other files
+- README.md: The markdown file you are reading (this line is so meta)
+- requirements.txt: states what packages need to be installed and their specific versions
 
 ## Citations
 
@@ -156,4 +174,4 @@ Status codes can be looked up in the IETF's official HTTP Semantics standard doc
 - Go to https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes
   - Proceed to Section 15. Status Codes
 
-AI Declaration: Claude (Anthropic) was used to help generate efficient code. README inclusions, docstring edits and edge-case handling were the ideas of the student.
+AI Declaration: Claude (Anthropic) was used to help generate efficient code and markdown files. README inclusions, docstring edits and edge-case handling were the ideas of the student.
