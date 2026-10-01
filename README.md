@@ -93,16 +93,23 @@ The project has 4 modules. Note that more details like parameters and elaborate 
 
 ### app.py: 
 main Streamlit python script used for managing users’ inputs and displaying results \
-explanations here for get_url
 
 ### api.py: python script that will contain the code for making API calls
 explain the function inside it, when does it get called (i.e., what action on the app uses it)
+get_url: call the API (www.frankfurter.app) and handle errors. \
+only passes values from the functions in other files, which partially comes from the streamlit app's user input.
 
 ### frankfurter.py: python script that will contain the functions used for calling relevant Frankfurter endpoints and extracting information.
-explain the functions inside it, when does it get called (i.e., what action on the app uses it)
+explain the functions inside it, when does it get called (i.e., what action on the app uses it) \
+get_currencies_list \
+get_latest_rates \
+get_historical_rate \
+get_rate_trend
 
---> currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app. \
---> README.md: a markdown file containing your details (full name, student id), a description of this project, listing of all Python functions and instructions for running your web app 
+### currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app. \
+
+### README.md: 
+The markdown file you are reading (so meta)
 
 ## Citations
 <Mention authors and provide links code you source externally>
