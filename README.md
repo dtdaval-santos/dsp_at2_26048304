@@ -26,7 +26,8 @@ It was also my first time to make a streamlit app outside of the few lines in th
 Honestly, writing the README file and the elaborate docstrings and comments was more tedious than the code.
 
 <Some of the features you hope to implement in the future>
-Future versions of this app will have st.session_state implemented to persist the outputs of clicking both Latest and Historical Rates.
+Future versions of this app will have st.session_state implemented to persist the outputs of clicking both Latest and Historical Rates. \
+Install the watchdog module in the virtual environment so the warning does not show up at "streamlit run app.py"
 
 ## How to Run the Program
 <Provide instructions and examples>

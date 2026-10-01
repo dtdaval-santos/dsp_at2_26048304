@@ -97,7 +97,7 @@ def get_historical_rate(from_currency, to_currency, from_date, amount=1):
         If date was a weekend or non-trading day, the API will return the most recent previous trading day.
         If the requested date is in the near future (i.e., a few days from the latest), the API will return the most recent trading day.
         If the requested date in otherwise invalid, the API will return an error message and this function will return None.
-    The app.py module has guardrails to handle these cases.
+    Streamlit handles this.
 
     Parameters
     ----------
@@ -108,7 +108,7 @@ def get_historical_rate(from_currency, to_currency, from_date, amount=1):
     amount : float
         The amount (in origin currency) to be converted
         Default is 1, but can be set to any positive float value; declared as default to avoid ZeroDivisionError for intermediate calculations
-        The app.py module also has a check to ensure that the amount is a positive float before calling this function.
+        Streamlit handles this.
     from_date : str
         Date when the conversion rate was recorded
 

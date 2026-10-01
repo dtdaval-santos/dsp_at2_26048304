@@ -68,7 +68,7 @@ def format_output(date, from_currency, to_currency, rate, amount):
     rounded_rate = round_rate(rate)
     inverse_rate = reverse_rate(rate)
     # project brief showed template for output text of currencies to have 2 decimal places
-    converted_amount = round_rate(rate * amount, 2)
+    converted_amount = round(rate * amount, 2)
 
     return (
         f"The conversion rate on {date} from {from_currency} to {to_currency} was {rounded_rate}. "
