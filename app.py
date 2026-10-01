@@ -55,7 +55,7 @@ selected_date = st.date_input("Select a date for historical rates:", max_value=d
 if st.button("Conversion Rate"):
     date_str = selected_date.strftime("%Y-%m-%d")
     # Call the get_historical_rate function from frankfurter.py
-    date, rate = get_historical_rate(from_currency, to_currency, amount, date_str, amount)
+    date, rate = get_historical_rate(from_currency, to_currency, amount, date_str)
 
     # Encode the positive case first
     if rate is not None:
