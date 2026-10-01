@@ -13,7 +13,7 @@ def round_rate(rate):
     float
         Rounded rate
     """
-    
+    return round(rate, 4)
 
 def reverse_rate(rate):
     """

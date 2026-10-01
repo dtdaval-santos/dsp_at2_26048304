@@ -106,7 +106,9 @@ get_latest_rates \
 get_historical_rate \
 get_rate_trend (with inherited logic from get_historical_rates)
 
-### currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app. \
+### currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app.
+round_rate \
+
 
 ### README.md: 
 The markdown file you are reading (so meta)
@@ -124,3 +126,5 @@ Status codes can be looked up in the IETF's official HTTP Semantics standard doc
 
 --> Go to https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes
 --> Proceed to Section 15. Status Codes
+
+AI Declaration: Claude (Anthropic) was used to help generate efficient code. Docstring edits and edge-case handling were the ideas of the student.
