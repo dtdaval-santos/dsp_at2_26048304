@@ -32,6 +32,11 @@ def reverse_rate(rate):
     float
         Inverse of input FX conversion rate
     """
+    if rate != 0:
+        # inherit the rounding function's 4 decimal places
+        return round(1 / rate)
+    else:
+        return 0
     
 def format_output(date, from_currency, to_currency, rate, amount):
     """

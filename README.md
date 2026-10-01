@@ -108,6 +108,7 @@ get_rate_trend (with inherited logic from get_historical_rates)
 
 ### currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app.
 round_rate \
+reverse_rate \
 
 
 ### README.md: 
