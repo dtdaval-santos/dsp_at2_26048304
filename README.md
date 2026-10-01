@@ -89,11 +89,18 @@ streamlit run app.py
 ## Project Structure
 <List all folders and files of this project and provide quick description for each of them>
 
-The project has the following files:
+The project has 4 modules. Note that more details like parameters and elaborate docstrings are inside the files, not in this README. The module files are as follows:
 
---> app.py: main Streamlit python script used for managing users’ inputs and displaying results \
---> api.py: python script that will contain the code for making API calls \
---> frankfurter.py: python script that will contain the functions used for calling relevant Frankfurter endpoints and extracting information. \
+### app.py: 
+main Streamlit python script used for managing users’ inputs and displaying results \
+explanations here for get_url
+
+### api.py: python script that will contain the code for making API calls
+explain the function inside it, when does it get called (i.e., what action on the app uses it)
+
+### frankfurter.py: python script that will contain the functions used for calling relevant Frankfurter endpoints and extracting information.
+explain the functions inside it, when does it get called (i.e., what action on the app uses it)
+
 --> currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app. \
 --> README.md: a markdown file containing your details (full name, student id), a description of this project, listing of all Python functions and instructions for running your web app 
 
