@@ -34,7 +34,7 @@ def reverse_rate(rate):
     """
     if rate != 0:
         # inherit the rounding function's 4 decimal places
-        return round(1 / rate)
+        return round_rate(1 / rate)
     else:
         # zero-check to avoid ZeroDivisionError
         return 0

@@ -29,10 +29,10 @@ def get_currencies_list():
     """
     url = f"{BASE_URL}/currencies"
 
-    # declare a tuple beacuse of get_url return type
+    # Declare a tuple beacuse of get_url return type
     status_code, response = get_url(url)
 
-    # for more info on status codes, see https://www.rfc-editor.org/rfc/rfc9110.html
+    # For more info on status codes, see https://www.rfc-editor.org/rfc/rfc9110.html
     if status_code == 200:
         currencies = json.loads(response)
         return list(currencies.keys())
@@ -71,7 +71,7 @@ def get_latest_rates(from_currency, to_currency, amount=1):
     url = f"{BASE_URL}/latest?amount={amount}&from={from_currency}&to={to_currency}"
     status_code, response = get_url(url)
 
-    # for more info on status codes, see https://www.rfc-editor.org/rfc/rfc9110.html
+    # For more info on status codes, see https://www.rfc-editor.org/rfc/rfc9110.html
     if status_code == 200:
         data = json.loads(response)
         date = data['date']
@@ -122,7 +122,7 @@ def get_historical_rate(from_currency, to_currency, from_date, amount=1):
     url = f"{BASE_URL}/{from_date}?amount={amount}&from={from_currency}&to={to_currency}"
     status_code, response = get_url(url)
 
-    # for more info on status codes, see https://www.rfc-editor.org/rfc/rfc9110.html
+    # For more info on status codes, see https://www.rfc-editor.org/rfc/rfc9110.html
     if status_code == 200:
         data = json.loads(response)
         date = data['date']
@@ -131,8 +131,9 @@ def get_historical_rate(from_currency, to_currency, from_date, amount=1):
         # need to divide it by the original amount to get the rate
         rate = converted_total / amount
         return date, rate
+    # Should also return tuple
     else:
-        return None
+        return None, None
 
 
 def get_rate_trend(from_currency: str, to_currency: str, years: int) -> dict:

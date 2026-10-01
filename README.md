@@ -24,6 +24,7 @@ The Streamlit Web App has the following elements:
 I placed this project on Github so I can practice using the technology, so it took more time to learn it and create branches than to just build the app and submit the zip folder.
 It was also my first time to make a streamlit app outside of the few lines in the class labs and U:PASS sessions, so there was some trial and error.
 Honestly, writing the README file and the elaborate docstrings and comments was more tedious than the code.
+But debugging was a close second to the documentation in level of challenge.
 
 <Some of the features you hope to implement in the future>
 Future versions of this app will have st.session_state implemented to persist the outputs of clicking both Latest and Historical Rates. \
@@ -94,6 +95,11 @@ streamlit run app.py
 
 Note: Expected Streamlit quirk, not a bug: clicking "Conversion Rate" after already clicking "Get Latest Rate" will make the latest-rate section's output disappear from the page. \
 The whole script reruns on every interaction, and st.button(...) only evaluates True on the exact run right after its own click.
+
+streamlit run app.py
+
+control + C for Mac
+Ctrl + C for Windows
 
 ## Project Structure
 <List all folders and files of this project and provide quick description for each of them>
