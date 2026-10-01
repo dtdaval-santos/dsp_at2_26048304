@@ -23,12 +23,15 @@ The Streamlit Web App has the following elements:
 --> A text box that will display the expected text described previously \\
 Future versions of this app will have __
 
-## How to Setup
+## How to Run the Program
+<Provide instructions and examples>
+
+### How to Setup
 <Provide a step-by-step description of how to get the development environment set and running.>
 <Which Python version you used>
 <Which packages and version you used>
 
-### Environment Setup
+#### Environment Setup
 
 This project was built with **Python 3.9.6**. Using a different major version may cause package installs to fail or behave differently, so matching this version is recommended.
 
@@ -80,8 +83,8 @@ Only two packages were installed directly; everything else in the file (e.g., nu
 streamlit run app.py
 ```
 
-## How to Run the Program
-<Provide instructions and examples>
+### Using the App
+<text here>
 
 ## Project Structure
 <List all folders and files of this project and provide quick description for each of them>
