@@ -105,3 +105,8 @@ This program calls 3 different API endpoints from the Frankfurter app:
 --> Extracting the list of available currency codes (documentation: https://www.frankfurter.app/docs/#currenciesLinks to an external site.) \
 --> Extracting the latest conversion rate for the specified currency codes (documentation: https://www.frankfurter.app/docs/#latestLinks to an external site.) \
 --> Extracting the historical conversion rate for the specified currency codes and a given date (documentation: https://www.frankfurter.app/docs/#historicalLinks to an external site.)
+
+Status codes can be looked up in the IETF's official HTTP Semantics standard documentation
+
+--> Go to https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes
+--> Proceed to Section 15. Status Codes

@@ -27,7 +27,17 @@ def get_currencies_list():
     list
         List of available currencies or None in case of error
     """
-    
+    url = f"{BASE_URL}/currencies"
+
+    # declare a tuple beacuse of get_url return type
+    status_code, response = get_url(url)
+
+    # for more info on status codes, see https://www.rfc-editor.org/rfc/rfc9110.html
+    if status_code == 200:
+        currencies = json.loads(response)
+        return list(currencies.keys())
+    else:
+        return None
 
 def get_latest_rates(from_currency, to_currency, amount):
     """
