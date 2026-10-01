@@ -1,6 +1,6 @@
 import requests
 
-def get_url(url: str) -> (int, str):
+def get_url(url: str) -> tuple[int, str]:
     """
     Function that will call a provided GET API endpoint url and return its status code and either its content or error message as a string.
     Programmed to catch exceptions in a try/except block so callers of the functions in the other modules do not need to handle exceptions downstream.
