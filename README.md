@@ -20,6 +20,15 @@ The Streamlit Web App has the following elements:
 --> A date input where user can select a date in the past \
 --> A text box that will display the expected text described previously
 
+Known limitations:
+
+— Loading time: the chart for historical rate trends may take a while to load depending on internet connection and calling 3 years of conversion rates on the API. when tested by the developer, it took around 5-20 seconds for different combinations of currencies.
+- Same currency pair: Selecting the same currency for both "From" and "To" (e.g. AUD → AUD) will return an error. Frankfurter's API rejects this combination (HTTP 422) rather than returning a trivial 1:1 rate, so the app surfaces this as a normal error message rather than a crash.
+- Weekends or holidays: will return the rates for the effective rates on that day from the latest trading day.
+- Restricted inputs: no amount 0 or below and no future dates in the streamlit app, even though dates in the near future (a week or so) are accepted by the API.
+- "Unable to fetch currency list" error: If this error appears, it usually means the initial call to Frankfurter's /currencies endpoint failed on load (often a transient network hiccup). Rather than refreshing the browser tab, use Streamlit's built-in Rerun — either the ⋮ menu in the top-right corner, or the R keyboard shortcut. This re-executes the script over the app's existing session rather than tearing down and reconnecting the whole browser tab from scratch, so it's the faster and more reliable way to retry.
+- Repeated errors: if 3 or more consecutive requests return an error (whether from "Get Latest Rate" or "Conversion Rate"), this points to a longer-lasting issue (e.g. the Frankfurter API itself being down, or a local network/firewall problem) rather than a one-off transient failure. In this case, quit the app in the terminal (Control+C on Mac, Ctrl+C on Windows) and relaunch it with `streamlit run app.py` instead of continuing to retry within the same session.
+
 <Some of the challenges you faced>
 I placed this project on Github so I can practice using the technology, so it took more time to learn it and create branches than to just build the app and submit the zip folder.
 It was also my first time to make a streamlit app outside of the few lines in the class labs and U:PASS sessions, so there was some trial and error.
