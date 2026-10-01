@@ -1,5 +1,6 @@
 from api import get_url
 import json
+from datetime import datetime, timedelta
 
 BASE_URL = "https://api.frankfurter.app"
 
@@ -91,6 +92,12 @@ def get_historical_rate(from_currency, to_currency, from_date, amount=1):
     After the API call, it will perform a check to see if the API call was successful.
     If it is the case, it will load the response as JSON, extract the conversion rate and return it.
     Otherwise it will return the value None.
+   
+   The returned date may not match the requested date:
+        If date was a weekend or non-trading day, the API will return the most recent previous trading day.
+        If the requested date is in the near future (i.e., a few days from the latest), the API will return the most recent trading day.
+        If the requested date in otherwise invalid, the API will return an error message and this function will return None.
+    The app.py module has guardrails to handle these cases.
 
     Parameters
     ----------
@@ -109,11 +116,6 @@ def get_historical_rate(from_currency, to_currency, from_date, amount=1):
     -------
     str
         Date of effective FX conversion rate or None in case of error
-        The returned date may not match the requested date:
-            If date was a weekend or non-trading day, the API will return the most recent previous trading day.
-            If the requested date is in the near future (i.e., a few days from the latest), the API will return the most recent trading day.
-            If the requested date in otherwise invalid, the API will return an error message and this function will return None.
-        The app.py module has guardrails to handle these cases.
     float
         Latest FX conversion rate or None in case of error
     """
@@ -136,6 +138,7 @@ def get_historical_rate(from_currency, to_currency, from_date, amount=1):
 def get_rate_trend(from_currency: str, to_currency: str, years: int) -> dict:
     """
     Fetches historical rates for the past N years on a quarterly basis and returns a dictionary with dates as keys and rates as values.
+    Note that the function may take long to execute if the number of years is large, as it makes multiple API calls (one for each quarter).
 
     Parameters
     ----------
@@ -151,3 +154,18 @@ def get_rate_trend(from_currency: str, to_currency: str, years: int) -> dict:
     dict
         Dictionary containing dates and their corresponding rates
     """
+    trend = {}
+    today = datetime.today()
+    total_quarters = years * 4
+
+    for quarter in range(total_quarters, -1, -1):
+        # Calculate the date for the current quarter, i.e., 3 month increments from today going backwards
+        quarter_date = today - timedelta(days=91 * quarter)
+        formatted_date = quarter_date.strftime("%Y-%m-%d")
+        # Fetch the historical rate for the calculated date, pass amount=1 since we want the rate, not any converted amount
+        date, rate = get_historical_rate(from_currency, to_currency, formatted_date, amount=1)
+
+        if rate is not None:
+            trend[date] = rate
+
+    return trend

@@ -104,7 +104,7 @@ explain the functions inside it, when does it get called (i.e., what action on t
 get_currencies_list \
 get_latest_rates \
 get_historical_rate \
-get_rate_trend
+get_rate_trend (with inherited logic from get_historical_rates)
 
 ### currency.py: python script that will contain the function used for formatting the results to be displayed in the Streamlit app. \
 
